@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 목록</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="product-container">
+    <div class="search-bar">
+        <input type="text" id="keyword" placeholder="상품명을 검색하세요">
+        <button id="searchBtn">검색</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/auth.js}"></script>
+<script th:src="@{/js/products.js}"></script>
+</body>
+</html>

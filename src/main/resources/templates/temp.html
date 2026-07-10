@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 처리 중</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: sans-serif;
+            background-color: #f4f4f9;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div class="spinner"></div>
+<h2>로그인 중입니다...</h2>
+<p>잠시만 기다려주세요.</p>
+
+<!--<script>
+    // 2초 뒤에 메인 페이지(또는 상품 목록 페이지)로 이동
+    setTimeout(() => {
+        window.location.href = '/products';
+    }, 2000);
+</script>-->
+</body>
+</html>
