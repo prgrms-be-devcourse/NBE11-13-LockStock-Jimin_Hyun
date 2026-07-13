@@ -14,13 +14,17 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", referencedColumnName = "userId") // DB 컬럼 member_id가 Member테이블의 user_id를 참조함
+    private Member member;
+
     @Column(nullable = false, length = 100)
     private String name;
 
     @Column(nullable = false)
     private int price;
 
-    @Column(length = 255)
+    @Column(columnDefinition = "TEXT")
     private String contents;
 
     @Column(length = 255)

@@ -3,6 +3,9 @@ package com.example.lockstock.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static lombok.AccessLevel.PROTECTED;
 
 @Entity
@@ -22,4 +25,7 @@ public class Member {
     private String password;
     @Column(nullable = false, length = 50)
     private String userName;
+
+    @OneToMany(mappedBy = "member")
+    private List<Product> products = new ArrayList<>();
 }

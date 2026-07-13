@@ -3,19 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>상품 목록</title>
+    <!-- FontAwesome 아이콘 라이브러리 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div class="product-container">
-    <div class="search-bar">
-        <input type="text" id="keyword" placeholder="상품명을 검색하세요">
-        <button id="searchBtn">검색</button>
+
+<!-- 상단 헤더 -->
+<header class="navbar header-container">
+    <div class="nav-left">
+        <a th:href="@{/products}" style="text-decoration:none; color:black; font-weight:bold; font-size: 20px;">쇼핑몰</a>
     </div>
 
+    <!-- 검색 영역 -->
+    <div class="search-bar">
+        <input type="text" id="keyword" class="search-input" placeholder="상품명을 검색하세요">
+        <button id="searchBtn" class="search-btn">검색</button>
+    </div>
+
+    <!-- 아이콘 버튼 영역 -->
+    <div class="nav-right">
+        <button class="icon-btn" onclick="location.href='/members/my-page'" title="마이페이지">
+            <i class="fa-solid fa-user"></i>
+        </button>
+        <button class="icon-btn" onclick="location.href='/cart'" title="장바구니">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+        <button id="logoutBtn" class="logout-btn">로그아웃</button>
+    </div>
+</header>
+
+<div class="product-container">
     <div class="product-grid" id="productGrid">
+        <!-- JS로 상품이 동적으로 추가됨 -->
+    </div>
+
+    <div id="pagination" class="pagination-container">
+        <!-- JS로 페이지 버튼이 생성됨 -->
     </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/js/auth.js}"></script>
 <script th:src="@{/js/products.js}"></script>

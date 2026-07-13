@@ -35,8 +35,8 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
 
     // 5. QueryDSL (재고 조회 최적화 필수템)
-    implementation 'com.querydsl:querydsl-jpa:5.1.0:jakarta'
-    annotationProcessor "com.querydsl:querydsl-apt:5.1.0:jakarta"
+    implementation 'io.github.openfeign.querydsl:querydsl-jpa:7.4.0'
+    annotationProcessor 'io.github.openfeign.querydsl:querydsl-apt:7.4.0:jpa'
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
