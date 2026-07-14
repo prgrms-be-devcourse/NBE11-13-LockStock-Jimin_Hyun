@@ -2,14 +2,14 @@ package com.example.lockstock.controller;
 
 import com.example.lockstock.domain.entity.Product;
 import com.example.lockstock.dto.request.ProductRequestDto;
+import com.example.lockstock.dto.response.ProductDetailResponse;
 import com.example.lockstock.dto.response.ProductListItemResponseDto;
+import com.example.lockstock.mapper.ProductMapper;
 import com.example.lockstock.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.Parameter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductsApiController {
 
     private final ProductService productService;
+    private final ProductMapper productMapper;
 
     @GetMapping
     public Page<ProductListItemResponseDto> searchProducts( //js에서 Page는 content(<dto>의 필드)를 갖는다.
@@ -29,10 +30,9 @@ public class ProductsApiController {
         return productService.searchProducts(dto, pageable);
     }
 
-    /*@GetMapping("/products/{id}")
-    public String detail(@PathVariable Long id, Model model) {
-        Product product = productService.findById(id);
-        model.addAttribute("product", product); // 여기서 엔티티의 version과 member_id까지 전부 전달됨
-        return "productDetail";
-    }*/
+    @GetMapping("/detail/{id}")
+    public ProductDetailResponse detail(@PathVariable Long id) {
+        Product product = productService.detail(id);
+        return productMapper.toProductDetailResponseDto(product);
+    }
 }

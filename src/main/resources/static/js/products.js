@@ -77,10 +77,11 @@ let renderProducts = (products) => {
             <div class="product-item ${isSoldOut ? 'sold-out' : ''}" 
                  data-id="${p.id}" 
                  data-version="${p.version}" 
-                 data-member-id="${p.memberId}">
+                 data-member-id="${p.memberId}"
+                 onclick="location.href='/products/detail?id=${p.id}'">
                  
                 ${isSoldOut ? '<div class="overlay">품절</div>' : ''}
-                <img src="${imgSrc}" onclick="location.href='/products/${p.id}'" alt="${p.name}">
+                <img src="${imgSrc}" alt="${p.name}">
                 <h3>${p.name}</h3>
                 <p class="price">${p.price.toLocaleString()}원</p>
                 <p class="${stockClass}">${stockStatus}</p>

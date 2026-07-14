@@ -1,0 +1,79 @@
+/* --- 상세 페이지 레이아웃 --- */
+.product-detail-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background: white;
+    border: 2px solid #000;
+}
+
+.detail-top {
+    display: flex;
+    gap: 40px;
+}
+
+/* 이미지 영역 */
+.detail-top img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border: 2px solid #000;
+}
+
+/* 정보 영역 */
+.info-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#name { font-size: 24px; font-weight: bold; }
+#price { font-size: 20px; color: #d00; font-weight: bold; }
+#contents { color: #555; border-top: 1px solid #ddd; padding-top: 15px; }
+
+/* 수량 조절 박스 */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.quantity-control input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: 2px solid #000;
+}
+
+.quantity-control button {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 버튼 영역 */
+.btn-area {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-area button {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #000;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 수정 버튼 전용 */
+#editBtn {
+    background: #fff !important;
+    color: #000 !important;
+}
