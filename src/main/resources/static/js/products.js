@@ -6,13 +6,6 @@ $(document).ready(() => {
     // 페이지 진입 시 전체 목록 로드 (1페이지)
     loadProducts(1);
 
-    // 로그아웃 버튼 클릭 이벤트
-    $('#logoutBtn').on('click', () => {
-        // GET 방식으로 로그아웃 API 호출
-        // 서버에서 세션 무효화 후 로그인 페이지로 리다이렉트 처리하는 것이 일반적
-        window.location.href = '/members/logout';
-    });
-
     // 검색 버튼 클릭 시
     $('#searchBtn').on('click', () => {
         // 1. 현재 검색 조건을 객체로 추출하여 전역 변수에 저장

@@ -96,3 +96,27 @@ body { background-color: #f9f9f9; font-family: 'Noto Sans KR', sans-serif; color
 }
 .page-btn.active { background: #000; color: #fff; border-color: #000; }
 .page-btn:hover:not(.active) { background: #f0f0f0; }
+
+/*헤더설정 */
+.header-container {
+    display: flex;            /* 요소들을 가로로 정렬 */
+    align-items: center;      /* 세로 중앙 정렬 */
+    justify-content: space-between; /* 로고는 왼쪽 끝, 오른쪽 버튼들은 오른쪽 끝으로 */
+    padding: 10px 20px;
+    width: 100%;              /* 화면 전체 너비 사용 */
+    box-sizing: border-box;   /* 패딩이 너비에 포함되도록 설정 */
+    border-bottom: 1px solid #ddd;
+}
+
+/* 검색창이 있는 경우, 가운데 정렬을 위해 추가 */
+.search-bar {
+    flex: 1;                  /* 남은 공간을 전부 차지하게 함 */
+    display: flex;
+    justify-content: center;  /* 검색창을 헤더 중앙에 위치 */
+}
+
+/* 오른쪽 버튼 영역 */
+.nav-right {
+    display: flex;
+    gap: 10px;                /* 버튼들 사이 간격 */
+}

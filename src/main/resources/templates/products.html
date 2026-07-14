@@ -11,26 +11,8 @@
 
 <!-- 상단 헤더 -->
 <header class="navbar header-container">
-    <div class="nav-left">
-        <a th:href="@{/products/}" style="text-decoration:none; color:black; font-weight:bold; font-size: 20px;">쇼핑몰</a>
-    </div>
-
-    <!-- 검색 영역 -->
-    <div class="search-bar">
-        <input type="text" id="keyword" class="search-input" placeholder="상품명을 검색하세요">
-        <button id="searchBtn" class="search-btn">검색</button>
-    </div>
-
-    <!-- 아이콘 버튼 영역 -->
-    <div class="nav-right">
-        <button class="icon-btn" onclick="location.href='/members/my-page'" title="마이페이지">
-            <i class="fa-solid fa-user"></i>
-        </button>
-        <button class="icon-btn" onclick="location.href='/cart'" title="장바구니">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-        <button id="logoutBtn" class="logout-btn">로그아웃</button>
-    </div>
+<!--헤더 설정 fragment-->
+    <div th:replace="~{fragments/header :: main-header}"></div>
 </header>
 
 <div class="product-container">

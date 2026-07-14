@@ -1,0 +1,38 @@
+<!-- 1. 검색창이 있는 헤더 -->
+<header th:fragment="main-header" class="navbar header-container">
+    <div class="nav-left">
+        <a href="/products/" style="text-decoration:none; color:black; font-weight:bold; font-size: 20px;">쇼핑몰</a>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" id="keyword" class="search-input" placeholder="상품명을 검색하세요">
+        <button id="searchBtn" class="search-btn">검색</button>
+    </div>
+
+    <div class="nav-right">
+        <button class="icon-btn" onclick="location.href='/admin/my-page'" title="마이페이지">
+            <i class="fa-solid fa-user"></i>
+        </button>
+        <button class="icon-btn" onclick="location.href='/cart'" title="장바구니">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+        <button class="logout-btn" onclick="location.href='/members/logout'">로그아웃</button>
+    </div>
+</header>
+
+<!-- 2. 검색창이 없는 일반 헤더 -->
+<header th:fragment="simple-header" class="navbar header-container">
+    <div class="nav-left">
+        <a href="/products/" style="text-decoration:none; color:black; font-weight:bold; font-size: 20px;">쇼핑몰</a>
+    </div>
+
+    <div class="nav-right">
+        <button class="icon-btn" onclick="location.href='/admin/my-page'" title="마이페이지">
+            <i class="fa-solid fa-user"></i>
+        </button>
+        <button class="icon-btn" onclick="location.href='/cart'" title="장바구니">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+        <button class="logout-btn" onclick="location.href='/members/logout'">로그아웃</button>
+    </div>
+</header>
