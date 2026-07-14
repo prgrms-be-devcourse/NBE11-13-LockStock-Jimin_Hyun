@@ -69,7 +69,7 @@ let renderProducts = (products) => {
 
     products.forEach((p) => {
         const isSoldOut = p.stockQuantity <= 0;
-        const imgSrc = p.thumbnailPath ? p.thumbnailPath : '/img/none.png';
+        const imgSrc = p.thumbnailPath ? `/images/${p.thumbnailPath}` : '/img/none.png';
         const stockClass = isSoldOut ? "sold-out-text" : "stock-text";
         const stockStatus = isSoldOut ? "품절" : `재고: ${p.stockQuantity}개`;
 

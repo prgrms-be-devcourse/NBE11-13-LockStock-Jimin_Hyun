@@ -48,7 +48,8 @@ function loadProductDetail(id) {
         url: `/api/products/detail/${id}`,
         success: (response) => {
             // 데이터 바인딩
-            $('#thumbnail').attr('src', response.thumbnailPath || '/img/none.png');
+            const imgPath = response.thumbnailPath ? `/images/${response.thumbnailPath}` : '/img/none.png';
+            $('#thumbnail').attr('src', imgPath);
             $('#name').text(response.name);
             $('#price').text(`가격: ${response.price.toLocaleString()}원`);
             $('#stock').text(`재고: ${response.stockQuantity}개`);
