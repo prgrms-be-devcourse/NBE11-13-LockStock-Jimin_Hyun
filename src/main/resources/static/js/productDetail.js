@@ -67,14 +67,26 @@ function loadProductDetail(id) {
 }
 
 // 로그인 유저와 상품 등록자 비교 함수
+// 로그인 유저와 상품 등록자 비교 및 버튼 이벤트 설정
 function checkOwnership(productMemberId) {
-    // 세션 정보 확인 API 호출
     $.ajax({
         type: 'GET',
-        url: '/api/check-session', // 현재 로그인한 멤버 정보를 가져오는 API (구현 필요)
+        url: '/api/check-session',
         success: (currentUser) => {
             if (currentUser.userId === productMemberId) {
+                // 버튼 표시
                 $('#editBtn').show();
+
+                // 수정 버튼 클릭 시 이동 (데이터 속성이나 전역변수로 상품 ID를 가져옴)
+                $('#editBtn').off('click').on('click', function() {
+                    // productMemberId를 비교할 때 사용했던 product의 고유 id가 필요합니다.
+                    // 만약 HTML 어딘가에 id가 있다면 가져오거나,
+                    // 함수 인자로 전달받은 값을 활용하세요.
+                    const productId = $('.product-detail-container').data('id');
+                    location.href = '/admin/update/' + productId;
+                });
+            } else {
+                $('#editBtn').hide();
             }
         }
     });

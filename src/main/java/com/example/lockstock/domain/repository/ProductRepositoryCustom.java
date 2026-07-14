@@ -7,4 +7,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface ProductRepositoryCustom {
     Page<ProductListItemResponseDto> searchProducts(ProductRequestDto condition, Pageable pageable);
+    Page<ProductListItemResponseDto> searchAdminProducts(ProductRequestDto condition, Pageable pageable, String userId);
 }

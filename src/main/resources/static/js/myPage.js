@@ -32,7 +32,7 @@ let getSearchCondition = () => {
 let loadProducts = (page) => {
     $.ajax({
         type: 'GET',
-        url: '/api/products',
+        url: '/api/admin/products',
         data: {
             page: page,
             size: PAGE_SIZE,

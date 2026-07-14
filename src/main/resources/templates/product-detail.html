@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>상품 상세</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/detail.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
     <!-- auth.css나 detail.css를 따로 만드셨다면 연결 -->
 </head>
 <body>
+
+<!-- 상단 헤더 -->
+<header class="navbar header-container">
+    <!--헤더 설정 fragment-->
+    <div th:replace="~{fragments/header :: simple-header}"></div>
+</header>
 
 <div class="product-detail-container" th:data-id="${id}">
     <!-- 상품 정보 영역 -->

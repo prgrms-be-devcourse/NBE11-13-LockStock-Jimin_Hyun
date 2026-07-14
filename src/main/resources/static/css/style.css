@@ -97,26 +97,96 @@ body { background-color: #f9f9f9; font-family: 'Noto Sans KR', sans-serif; color
 .page-btn.active { background: #000; color: #fff; border-color: #000; }
 .page-btn:hover:not(.active) { background: #f0f0f0; }
 
-/*헤더설정 */
-.header-container {
-    display: flex;            /* 요소들을 가로로 정렬 */
-    align-items: center;      /* 세로 중앙 정렬 */
-    justify-content: space-between; /* 로고는 왼쪽 끝, 오른쪽 버튼들은 오른쪽 끝으로 */
-    padding: 10px 20px;
-    width: 100%;              /* 화면 전체 너비 사용 */
-    box-sizing: border-box;   /* 패딩이 너비에 포함되도록 설정 */
-    border-bottom: 1px solid #ddd;
+
+
+/* 전체 컨테이너 */
+.product-detail-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 2px solid #000; /* 심플한 검은색 테두리 */
+    background-color: #fff;
+    box-shadow: 8px 8px 0px #000; /* 약간의 입체감 효과 */
 }
 
-/* 검색창이 있는 경우, 가운데 정렬을 위해 추가 */
-.search-bar {
-    flex: 1;                  /* 남은 공간을 전부 차지하게 함 */
-    display: flex;
-    justify-content: center;  /* 검색창을 헤더 중앙에 위치 */
+.product-detail-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* 오른쪽 버튼 영역 */
-.nav-right {
+/* 폼 그룹 간격 */
+.product-detail-container div {
+    margin-bottom: 20px;
     display: flex;
-    gap: 10px;                /* 버튼들 사이 간격 */
+    flex-direction: column;
+}
+
+/* 라벨 스타일 */
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* 공통 입력창 스타일 */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #000;
+    font-size: 16px;
+    box-sizing: border-box; /* 패딩이 너비를 넘치지 않게 */
+}
+
+textarea {
+    resize: vertical; /* 세로로만 크기 조절 가능 */
+    min-height: 150px;
+}
+
+/* 파일 입력창 스타일 */
+input[type="file"] {
+    padding: 10px 0;
+}
+
+/* 수정 완료 버튼 */
+#updateSubmitBtn, #submitBtn {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#updateSubmitBtn:hover, #submitBtn:hover {
+    background-color: #333;
+}
+
+/* 파일 목록 스타일 */
+#fileList {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#fileList li {
+    padding: 8px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+}
+
+.remove-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
 }

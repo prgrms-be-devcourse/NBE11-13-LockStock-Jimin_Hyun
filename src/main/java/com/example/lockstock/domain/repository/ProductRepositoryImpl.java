@@ -59,8 +59,50 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom  {
         return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchOne);
     }
 
+    @Override
+    public Page<ProductListItemResponseDto> searchAdminProducts(ProductRequestDto condition, Pageable pageable, String userId) {
+        List<ProductListItemResponseDto> content = queryFactory.select(
+                        Projections.constructor(
+                                ProductListItemResponseDto.class,
+                                product.id,
+                                product.name,
+                                product.thumbnailPath,
+                                product.price,
+                                product.stockQuantity, // 서브쿼리
+                                product.version,
+                                member.userId
+                        )
+                )
+                .from(product)
+                .leftJoin(member).on(product.member.userId.eq(member.userId))
+                .where(
+                        userIdEquals(userId),
+                        keywordContains(condition.getKeyword())
+                )
+                .orderBy(product.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        // 전체 개수 쿼리
+        JPAQuery<Long> countQuery = queryFactory
+                .select(product.count())
+                .from(product)
+                .where(
+                        userIdEquals(userId),
+                        keywordContains(condition.getKeyword())
+                );
+
+        return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchOne);
+    }
+
     // 상품명 부분 일치 (Like %keyword%). 빈 값이면 조건 없음(null)
     private BooleanExpression keywordContains(String keyword) {
         return (keyword == null || keyword.isBlank()) ? null : product.name.contains(keyword);
+    }
+
+    // 멤버 id 일치
+    private BooleanExpression userIdEquals(String userId) {
+        return (userId == null || userId.isBlank()) ? null : product.member.userId.eq(userId);
     }
 }

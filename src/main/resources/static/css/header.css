@@ -1,0 +1,50 @@
+/* --- 통합 헤더 레이아웃 --- */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 50px;
+    background: #fff;
+    border-bottom: 2px solid #000;
+    width: 100%;
+}
+
+.nav-left { flex: 1; }
+.nav-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+/* 검색창 영역 */
+.search-bar {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.search-input { width: 400px; height: 50px; padding: 0 15px; border: 2px solid #000; }
+.search-btn { height: 50px; width: 80px; background: #000; color: #fff; font-weight: bold; cursor: pointer; }
+
+/* 아이콘 및 로그아웃 */
+.icon-btn {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-btn {
+    padding: 10px 15px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}

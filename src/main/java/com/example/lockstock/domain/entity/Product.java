@@ -35,4 +35,12 @@ public class Product {
 
     @Version
     private Long version;
+
+    public void update(String name, int price, String contents, String thumbnailPath, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.contents = contents;
+        this.thumbnailPath = thumbnailPath;
+        this.stockQuantity = stockQuantity;
+    }
 }

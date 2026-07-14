@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 수정</title>
+    <!-- 여기에 공통 CSS 파일을 연결하세요 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <!-- FontAwesome 등 필요한 아이콘 라이브러리 -->
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<!-- 검색창 없는 일반 헤더 호출 -->
+<div th:replace="~{fragments/header :: simple-header}"></div>
+
+<div class="product-detail-container">
+    <h2>상품 수정</h2>
+    <form id="updateForm" enctype="multipart/form-data">
+        <!-- Hidden Fields -->
+        <input type="hidden" id="hiddenId" name="id" th:value="${id}">
+        <input type="hidden" id="hiddenFileFlag" name="fileFlag" value="false">
+        <input type="hidden" id="originalThumbnailPath" name="originalThumbnailPath" value="">
+
+        <div>
+            <label>상품명</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div>
+            <label>가격</label>
+            <input type="number" id="price" name="price" required>
+        </div>
+
+        <div>
+            <label>재고 수량</label>
+            <input type="number" id="stockQuantity" name="stockQuantity" required>
+        </div>
+
+        <div>
+            <label>상세 내용</label>
+            <textarea id="contents" name="contents" rows="5" required></textarea>
+        </div>
+
+        <div>
+            <label>상품 이미지</label>
+            <input type="file" id="file" name="file" accept="image/*">
+            <ul id="fileList"></ul>
+        </div>
+
+        <button type="button" id="updateSubmitBtn">수정 완료</button>
+    </form>
+</div>
+
+<!-- 페이지 하단 스크립트 -->
+<script th:src="@{/js/auth.js}"></script>
+<script th:src="@{/js/productUpdate.js}"></script>
+</body>
+</html>

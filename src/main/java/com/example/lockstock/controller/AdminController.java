@@ -6,21 +6,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/products")
-public class ProductController {
-    @GetMapping("/")
-    public String product() {
-        return "products";
+@RequestMapping("/admin")
+public class AdminController {
+
+    @GetMapping("/my-page")
+    public String myPage() {
+        return "my-page";
     }
-    @GetMapping("/detail/{id}")
-    public String detail(
-            @PathVariable Long id,
-            Model model
-    ) {
+
+    @GetMapping("/write")
+    public String write() {
+        return "/product-write";
+    }
+
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable long id, Model model) {
         model.addAttribute("id", id);
-        return "/product-detail";
+        return "product-update";
     }
 }
