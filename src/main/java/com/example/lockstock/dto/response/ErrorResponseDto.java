@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Getter @AllArgsConstructor
 public class ErrorResponseDto {
-    private String message;
     private int status;
+    private String message;
 }

@@ -38,6 +38,8 @@
                 <button id="addCartBtn">장바구니 담기</button>
                 <!-- 수정 버튼: JS에서 세션 정보와 비교 후 표시 -->
                 <button id="editBtn" style="display:none;" th:onclick="|location.href='@{/products/edit/{id}(id=${id})}'|">상품 수정</button>
+                <!-- 삭제 버튼 -->
+                <button id="deleteBtn" style="display:none;" class="delete-btn">상품 삭제</button>
             </div>
         </div>
     </div>

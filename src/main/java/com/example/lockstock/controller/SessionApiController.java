@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 public class SessionApiController {
+    //매번 세션 체크하기싫어서 컨트롤러로 따로 뺌
 
     @GetMapping("/api/check-session")
     public ResponseEntity<?> checkSession(HttpSession session) {

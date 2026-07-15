@@ -150,7 +150,7 @@ input[type="file"] {
 }
 
 /* 수정 완료 버튼 */
-#updateSubmitBtn, #submitBtn {
+#updateSubmitBtn, #writeSubmitBtn, #submitBtn {
     width: 100%;
     padding: 15px;
     background-color: #000;
@@ -162,7 +162,7 @@ input[type="file"] {
     margin-top: 10px;
 }
 
-#updateSubmitBtn:hover, #submitBtn:hover {
+#updateSubmitBtn:hover, #writeSubmitBtn, #submitBtn:hover {
     background-color: #333;
 }
 
@@ -189,4 +189,35 @@ input[type="file"] {
     padding: 5px 10px;
     cursor: pointer;
     font-size: 12px;
+}
+
+/* 상품 등록 플로팅 버튼 */
+.floating-write-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    /* 크기 및 형태 */
+    padding: 15px 30px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 30px; /* 알약 모양 */
+
+    /* 폰트 및 정렬 */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none; /* 밑줄 제거 */
+    display: flex;
+    align-items: center;
+    gap: 10px;           /* 아이콘과 글자 사이 간격 */
+
+    /* 그림자 및 효과 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.floating-write-btn:hover {
+    background-color: #333;
+    transform: scale(1.05); /* 마우스 올리면 살짝 커짐 */
 }

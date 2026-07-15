@@ -1,5 +1,7 @@
+const productId = $('.product-detail-container').data('id');
+let thumbnailPath;
 $(document).ready(() => {
-    const productId = $('.product-detail-container').data('id');
+
 
     // 1. 상품 상세 정보 로드
     loadProductDetail(productId);
@@ -48,8 +50,9 @@ function loadProductDetail(id) {
         url: `/api/products/detail/${id}`,
         success: (response) => {
             // 데이터 바인딩
-            const imgPath = response.thumbnailPath ? `/images/${response.thumbnailPath}` : '/img/none.png';
-            $('#thumbnail').attr('src', imgPath);
+            thumbnailPath = response.thumbnailPath ? response.thumbnailPath : null;
+            const Path = response.thumbnailPath ? `/images/${response.thumbnailPath}` : '/img/none.png';
+            $('#thumbnail').attr('src', Path);
             $('#name').text(response.name);
             $('#price').text(`가격: ${response.price.toLocaleString()}원`);
             $('#stock').text(`재고: ${response.stockQuantity}개`);
@@ -76,17 +79,38 @@ function checkOwnership(productMemberId) {
             if (currentUser.userId === productMemberId) {
                 // 버튼 표시
                 $('#editBtn').show();
+                $('#deleteBtn').show();
 
                 // 수정 버튼 클릭 시 이동 (데이터 속성이나 전역변수로 상품 ID를 가져옴)
                 $('#editBtn').off('click').on('click', function() {
                     // productMemberId를 비교할 때 사용했던 product의 고유 id가 필요합니다.
                     // 만약 HTML 어딘가에 id가 있다면 가져오거나,
                     // 함수 인자로 전달받은 값을 활용하세요.
-                    const productId = $('.product-detail-container').data('id');
                     location.href = '/admin/update/' + productId;
+                });
+
+                // 삭제 버튼 클릭 이벤트
+                $('#deleteBtn').on('click', function() {
+                    if (confirm("정말 이 상품을 삭제하시겠습니까?")) {
+
+                        $.ajax({
+                            type: 'DELETE',
+                            url: '/api/admin/products/' + productId,
+                            contentType: 'application/json',
+                            data: JSON.stringify({ thumbnailPath: thumbnailPath }),
+                            success: (response) => {
+                                alert("삭제되었습니다.");
+                                window.location.href = '/products/';
+                            },
+                            error: (error) => {
+                                alert("삭제 실패: " + error.responseText);
+                            }
+                        });
+                    }
                 });
             } else {
                 $('#editBtn').hide();
+                $('#deleteBtn').hide();
             }
         }
     });

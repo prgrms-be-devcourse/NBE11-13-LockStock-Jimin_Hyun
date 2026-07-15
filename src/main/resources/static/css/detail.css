@@ -77,3 +77,13 @@
     background: #fff !important;
     color: #000 !important;
 }
+
+/* 삭제 버튼은 붉은색 계열로 눈에 띄게 */
+#deleteBtn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#deleteBtn:hover {
+    background-color: #cc0000;
+}

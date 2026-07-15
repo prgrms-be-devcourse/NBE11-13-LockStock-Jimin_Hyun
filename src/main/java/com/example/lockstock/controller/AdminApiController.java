@@ -5,11 +5,13 @@ import com.example.lockstock.domain.repository.ProductRepository;
 import com.example.lockstock.dto.request.ProductDeleteRequestDto;
 import com.example.lockstock.dto.request.ProductRequestDto;
 import com.example.lockstock.dto.request.ProductUpdateRequestDto;
+import com.example.lockstock.dto.request.ProductWriteRequestDto;
 import com.example.lockstock.dto.response.ProductDetailResponse;
 import com.example.lockstock.dto.response.ProductListItemResponseDto;
 import com.example.lockstock.mapper.ProductMapper;
 import com.example.lockstock.service.FileService;
 import com.example.lockstock.service.ProductService;
+import com.example.lockstock.session.SessionConst;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -45,10 +47,11 @@ public class AdminApiController {
         return productMapper.toProductDetailResponseDto(productDetail);
     }
 
-    /*@PostMapping("/new")
-    public void saveProduct(@ModelAttribute BoardWriteRequestDto dto) {
-        boardService.saveBoard(dto.getUserId(), dto.getTitle(), dto.getContent(), dto.getFile());
-    }*/
+    @PostMapping("/new") //세션을 붙인 이유 dto넘길 때 id가 같이 넘어오면 보안 이슈
+    public void saveProduct(@ModelAttribute ProductWriteRequestDto dto, HttpSession session) {
+        dto.setMemberId((String) session.getAttribute(SessionConst.USER_ID));
+        productService.saveBoard(dto);
+    }
 
     @PutMapping(value = "/{id}")
     public void updateProduct(
@@ -65,11 +68,5 @@ public class AdminApiController {
         productService.deleteProduct(id, dto);
     }
 
-    @DeleteMapping("/file")
-    public void deleteFile(
-            @RequestParam String thumbnailPath
-    ) {
-        fileService.deleteFile(thumbnailPath);
-    }
 
 }
